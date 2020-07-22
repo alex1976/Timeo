@@ -7,7 +7,7 @@ Timeo è una web app per la registrazione on-site e in real-time di attività, t
 
 Timeo trova diversi settori di applicazione (Costruzioni, Energia, Impianti, Servizi) e per svariate tipologie di attività (Lavoro, Manutenzione, Sopralluogo, Ispezione, Pulizia) 
 
-![schermata2](https://github.com/alex1976/Timeo/blob/master/Timeo_Mobile.jpg)
+![schermata2](https://github.com/alex1976/Timeo/blob/master/Timeo_Dashboard_Mobile.jpg)
 
 ## FUNZIONALITA':
 
