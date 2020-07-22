@@ -19,3 +19,9 @@ Timeo is a web app for tracking activities, timesheets and equipments/materials 
 
 7. Administration
 
+## ARCHITECTURE:
+...
+
+## DEMO:
+...
+
