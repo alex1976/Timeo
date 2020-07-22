@@ -7,13 +7,15 @@ Timeo is a web app for tracking activities, timesheets and equipments/materials 
 
 1. Dashboard
 
-2. Activities
+2. Calendar
 
-3. Timesheets
+3. Activities
 
-4. Equipments/Materials usage
+4. Timesheets
 
-5. General settings
+5. Equipments/Materials usage
 
-6. Administration
+6. General settings
+
+7. Administration
 
