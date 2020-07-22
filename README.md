@@ -1,27 +1,27 @@
-# Timeo
-Manage activities, time and materials of your team
+# TIMEO
+Gestisci attività, tempo e risorse (attrezzature e materiali) del tuo team
 
-Timeo is a web app for tracking activities, timesheets and equipments/materials usage. Timeo is made for field service professionals that want to record data in real time to keep their work under control
+Timeo è una web app per la registrazione on-site e in real-time di attività, tempi e utilizzi di materiali e attrezzature.Pensata per i lavori sul campo consente di registrare dati in tempo reale per tenere il lavoro sotto controllo anche da remoto.
 
 ![schermata1](https://github.com/alex1976/Timeo/blob/master/Timeo_Dashboard.jpg)
 
-## FEATURES:
+## FUNZIONALITA':
 
 1. Dashboard
 
-2. Calendar
+2. Calendario
 
-3. Activities
+3. Attività
 
-4. Timesheets
+4. Registrazione ore persoale
 
-5. Equipments/Materials usage
+5. Registrazione utilizzo materiali e attrezzature
 
-6. General settings
+6. Impostazioni generali
 
-7. Administration
+7. Amministrazione
 
-## ARCHITECTURE:
+## ARCHITETTURA:
 ...
 
 ## DEMO:
