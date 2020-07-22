@@ -3,6 +3,8 @@ Manage activities, time and materials of your team
 
 Timeo is a web app for tracking activities, timesheets and equipments/materials usage. Timeo is made for field service professionals that want to record data in real time to keep their work under control
 
+![schermata1](https://github.com/alex1976/Timeo/blob/master/Timeo_Dashboard.jpg)
+
 ## FEATURES:
 
 1. Dashboard
