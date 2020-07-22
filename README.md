@@ -26,7 +26,9 @@ TIMEO trova diversi settori di applicazione (Costruzioni, Energia, Impianti, Ser
 7. Amministrazione
 
 ## ARCHITETTURA:
-...
+
+Realizzata attraverso il framework open source denominato SERENE (ASP.NET MVC + Typescript), l'applicazione può essere utilizzata sia in ambiente CLOUD sia ON-PREMISE con server web pubblicato.
+
 
 ## DEMO:
 ...
