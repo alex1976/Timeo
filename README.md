@@ -11,6 +11,7 @@ TIMEO trova diversi settori di applicazione (Costruzioni, Energia, Impianti, Ser
 
 ## FUNZIONALITA':
 
+Interfaccia "responsive" pensata per essere fruibile da PC, Table e smartphone. La gestioni principali sono:
 1. Dashboard
 
 2. Calendario
@@ -27,8 +28,9 @@ TIMEO trova diversi settori di applicazione (Costruzioni, Energia, Impianti, Ser
 
 ## ARCHITETTURA:
 
-Realizzata attraverso il framework open source denominato SERENE (ASP.NET MVC + Typescript), l'applicazione può essere utilizzata sia in ambiente CLOUD sia ON-PREMISE con server web pubblicato.
+TIMEO è una applicazione che sfrutto .Net Framework 4.5 e gira sotto Windows con IIS
 
+Realizzata attraverso il framework open source denominato SERENE (ASP.NET MVC + Typescript), l'applicazione può essere utilizzata sia in ambiente CLOUD sia ON-PREMISE con server web pubblicato.
 
 ## DEMO:
 ...
