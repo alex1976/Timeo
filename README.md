@@ -17,7 +17,7 @@ Interfaccia "responsive" pensata per essere fruibile da PC, Tablet e smartphone.
 
 2. Calendario
 
-3. Attività
+3. Giornale attività
 
 4. Registrazione ore personale
 
