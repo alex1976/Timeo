@@ -1,0 +1,35 @@
+FEATURES:
+
+Priorita 1:
+- Attività chiuse/fatte non visibili (nuovo attributo e filtro) --> FATTO
+- Attività filtrate e visibili solo ai diretti interessati --> FATTO (singolo utente o tutti)
+- Nuovo attributo Tag su attività --> può essere usato per tipo --> FATTO
+- Nuovo attributo Commessa (tenant o attributo esplicito) da gestire su attività --> FATTO
+- Calcolo/Ricalcolo avanzamento attività in base alle ore registrate --> FATTO
+- Debug
+
+Priorità 2:
+- Gestione allegati delle registrazioni (immagini/documenti) --> FATTO
+- Stampa attrezzature/mezzi/materiali
+- Gestione pianificazione attività: stato + calendar --> FATTO
+- Map control per posizione persone/mezzi
+- Arricchimento dashboard (nuovi grafci)
+- Gestione impostazioni generali: blocco registrazioni, logo per stampe, ecc...
+- Gestione firma elettronica
+- STATO ATTIVITA' (TODO, WIP, DONE) , con esclusione (opzionale) dal calendario di quelle fatte
+- NOTE SPESE: nuova gestione
+- API documentazione (capire se/come utilizzae swagger)
+
+Customizing login screen
+https://github.com/serenity-is/Serenity/wiki/UI:-Customizing-the-Login-Screen
+
+Customizing menu bar
+https://github.com/serenity-is/Serenity/wiki/UI:-Inserting-divider-lines-after-individual-top-level-menu-entries-on-the-left-navigation-bar
+
+
+PROMOZIONE PRODOTTO:
+
+- Creazione di un sito per promuovere il prodotto
+- In alternativa GitHub e valorizzazione/promozione come progetto OpenSource
+- Canali indiretti
+

@@ -1,0 +1,378 @@
+﻿@model TimeManager.Common.DashboardPageModel
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["PageId"] = "Dashboard";
+}
+
+@section Head {
+
+    <script src="~/Scripts/chartjs/Chart.min.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+
+    @*<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />*@
+    @*<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>*@
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $.getJSON("Dashboard/LoadActivityTable",
+                function (json) {
+                    var tr;
+                    for (var i = 0; i < json.length; i++) {
+                        tr = $('<tr />');
+                        tr.append("<td>" + json[i].code + "</td>");
+                        tr.append("<td>" + json[i].description + "</td>");
+                        tr.append("<td>" + json[i].start + "</td>");
+                        tr.append("<td>" + json[i].end + "</td>");
+
+                        switch (json[i].priority) {
+                            case '1':
+                                tr.append("<td><span class='" + "label label-danger" + "'>" + json[i].priority + "</span></td>");
+                                break;
+                            case '2':
+                                tr.append("<td><span class='" + "label label-warning" + "'>" + json[i].priority + "</span></td>");
+                                break;
+                            case '3':
+                                tr.append("<td><span class='" + "label label-primary" + "'>" + json[i].priority + "</span></td>");
+                                break;
+                            default:
+                                tr.append("<td><span class='" + "label label-success" + "'>" + json[i].priority + "</span></td>");
+                                break;
+                        }
+
+                        $('table').append(tr);
+                    }
+                    //$('#activitytable').DataTable();
+                });
+        });
+
+    </script>
+
+}
+
+@section ContentHeader {
+    @*<h1>@LocalText.Get("Navigation.Dashboard") <small>@Html.Raw(Texts.Site.Dashboard.ContentDescription)</small> </h1>*@
+    <h1>@LocalText.Get("Navigation.Dashboard")</h1>
+}
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow">
+                <i class="ion ion-ios-gear-outline"></i>
+                <a href="~/Default/Activities" class="small-box-footer"><i class="fa fa-address-book"></i></a>
+            </span>
+            <div class="info-box-content">
+                <span class="info-box-text">ATTIVITA</span>
+                <span class="info-box-number">@Model.ActivityCount<small> (numero) </small></span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    @*<div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>@Model.EmployeeCount</h3>
+                    <p>DIPENDENTI</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="~/Default/Employees" class="small-box-footer">ENTRA <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>*@<!-- ./col -->
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua">
+                <i class="ion ion-ios-gear-outline"></i>
+                <a href="~/Default/Timesheets" class="small-box-footer"><i class="fa fa-clock-o"></i></a>
+            </span>
+            <div class="info-box-content">
+                <span class="info-box-text">ORE PERSONE</span>
+                <span class="info-box-number">@Model.CurrentEmployeeHoursCount<small> (ore) </small></span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    @*<div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>@Model.CurrentEmployeeHoursCount</h3>
+                    <p>GESTIONE ORE PERSONE</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-man"></i>
+                </div>
+                <a href="~/Default/Timesheets" class="small-box-footer">ENTRA <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>*@<!-- ./col -->
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-red">
+                <i class="ion ion-ios-gear-outline"></i>
+                <a href="~/Default/EquipmentUsages" class="small-box-footer"><i class="fa fa-automobile"></i></a>
+            </span>
+            <div class="info-box-content">
+                <span class="info-box-text">ORE MEZZI/MATERIALI</span>
+                <span class="info-box-number">@Model.EquipmentUsageCount<small> (registrazioni) </small></span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    @*<div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>@Model.EquipmentUsageCount</h3>
+                    <p>GESTIONE ORE MEZZI</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="~/Default/EquipmentUsages" class="small-box-footer">ENTRA <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>*@<!-- ./col -->
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-green">
+                <i class="ion ion-ios-gear-outline"></i>
+                <a href="~/Calendar" class="small-box-footer"><i class="fa fa-calendar"></i></a>
+            </span>
+            <div class="info-box-content">
+                <span class="info-box-text">CALENDARIO</span>
+                <span class="info-box-number">@Model.ActivityCalendarCount<small> (attività programmate) </small></span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    @*<div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>@Model.EquipmentCount</h3>
+                    <p>ATTREZZATURE e MEZZI</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="~/Default/Equipments" class="small-box-footer">ENTRA <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>*@<!-- ./col -->
+</div><!-- /.row -->
+<!-- TABLE: LATEST ORDERS -->
+<div class="box box-body">
+    <div class="box-header with-border">
+        <h3 class="box-title">Ultime (5) ATTIVITA'</h3>
+        <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <div class="table-responsive no-padding">
+            <table id="activitytable" class="table table-striped">
+                @*<thead>*@
+                <tr>
+                    <th>ID</th>
+                    <th>DESCRIZIONE</th>
+                    <th>INIZIO</th>
+                    <th>FINE</th>
+                    <th>PRIORITA</th>
+                </tr>
+                @*</thead>*@
+                @*<tbody>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                            <td>Call of Duty IV</td>
+                            <td><span class="label label-success">Shipped</span></td>
+                            <td><div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="label label-warning">Pending</span></td>
+                            <td><div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>iPhone 6 Plus</td>
+                            <td><span class="label label-danger">Delivered</span></td>
+                            <td><div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="label label-info">Processing</span></td>
+                            <td><div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="label label-warning">Pending</span></td>
+                            <td><div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>iPhone 6 Plus</td>
+                            <td><span class="label label-danger">Delivered</span></td>
+                            <td><div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                            <td>Call of Duty IV</td>
+                            <td><span class="label label-success">Shipped</span></td>
+                            <td><div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>
+                        </tr>
+                    </tbody>*@
+            </table>
+        </div><!-- /.table-responsive -->
+    </div><!-- /.box-body -->
+    <div class="box-footer clearfix">
+        @*<a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>*@
+        <a href="~/Default/Activities" class="btn btn-sm btn-default btn-flat pull-right">Vedi TUTTE</a>
+        <a href="~/Default/Activities#new" class="btn btn-sm btn-info btn-flat pull-right">Crea NUOVA</a>
+    </div><!-- /.box-footer -->
+
+</div><!-- /.box -->
+<!-- Main row -->
+<div class="row">
+    <!-- Left col -->
+    <section class="col-lg-12 connectedSortable">
+
+        <div class="box box-body">
+            <div class="box-header with-border">
+                <h3 class="box-title">ORE TOTALI PERSONALE MESE</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="barChart" style="height:230px"></canvas>
+                </div>
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+        @*<div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">ORE STR. TOTALI MESE</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="chart">
+                        <canvas id="barChart2" style="height:230px"></canvas>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->*@
+
+        <!-- Custom tabs (Charts with tabs)-->
+        @*<div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                    <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
+                    <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
+                    <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <!-- Morris chart - Sales -->
+                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                </div>
+            </div>*@<!-- /.nav-tabs-custom -->
+
+    </section><!-- /.Left col -->
+
+</div><!-- /.row (main row) -->
+
+
+<script>
+    $( document ).ready(function () {
+        /* ChartJS
+            * -------
+            * Here we will create a few charts using ChartJS
+            */
+
+        var areaChartData = {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dic"],
+            datasets: [
+                {
+                    label: "Ore dipendenti",
+                    fillColor: "rgba(60,141,188,0.9)",
+                    strokeColor: "rgba(60,141,188,0.8)",
+                    pointColor: "#3b8bba",
+                    pointStrokeColor: "rgba(60,141,188,1)",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(60,141,188,1)",
+                    data: @Model.HoursForMonth
+                }
+            ]
+        };
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $("#barChart").get(0).getContext("2d");
+        var barChart = new Chart(barChartCanvas);
+        var barChartData = areaChartData;
+        barChartData.datasets[0].fillColor = "#00a65a";
+        barChartData.datasets[0].strokeColor = "#00a65a";
+        barChartData.datasets[0].pointColor = "#00a65a";
+        var barChartOptions = {
+            //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+            scaleBeginAtZero: true,
+            //Boolean - Whether grid lines are shown across the chart
+            scaleShowGridLines: true,
+            //String - Colour of the grid lines
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            //Number - Width of the grid lines
+            scaleGridLineWidth: 1,
+            //Boolean - Whether to show horizontal lines (except X axis)
+            scaleShowHorizontalLines: true,
+            //Boolean - Whether to show vertical lines (except Y axis)
+            scaleShowVerticalLines: true,
+            //Boolean - If there is a stroke on each bar
+            barShowStroke: true,
+            //Number - Pixel width of the bar stroke
+            barStrokeWidth: 2,
+            //Number - Spacing between each of the X value sets
+            barValueSpacing: 5,
+            //Number - Spacing between data sets within X values
+            barDatasetSpacing: 1,
+            //String - A legend template
+            legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+            //Boolean - whether to make the chart responsive
+            responsive: true,
+            maintainAspectRatio: true
+        };
+
+        barChartOptions.datasetFill = false;
+        barChart.Bar(barChartData, barChartOptions);
+
+        //-----------------------------------
+        // Populate last activities table
+        //-----------------------------------
+        //var table = $('#activitytable').DataTable({
+        //    ajax: '/Dashboard/LoadActivityTable/',
+         @*ajax: '@Url.Action("LoadActivityTable", "Dashboard")',*@
+
+            //columns: [
+            //    { title: "Code" },
+            //    { title: "Description" },
+            //    { title: "Start" },
+            //    { title: "End" },
+            //    { title: "Priority" }
+            //]
+        //})
+
+
+    });
+</script>

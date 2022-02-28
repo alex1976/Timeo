@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Map";
+}
+
+@section Head {
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnsqmjOgj8Rl8CNWgFtoX2EH0pWKTcYXk&callback=initMap"></script>
+
+    <style type="text/css">
+
+        #map_canvas {
+            height: 800px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+            var activities = function () {
+
+                //return $.getJSON("Map/LoadActivityTable");
+                return @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+            }();
+
+            @*var activities = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));*@
+	        //console.log(cities);
+
+            $(document).ready(function() {
+                // execute
+                (function() {
+                    // map options
+                    var options = {
+                        zoom: 8,
+                        mapId: 'b3ab6a2e1439a137',
+                        center: new google.maps.LatLng(45.000000, 10.000000),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        streetViewControl: true,
+                        mapTypeControl: true
+                    };
+
+                    // init map
+                    var map = new google.maps.Map(document.getElementById('map_canvas'), options);
+
+
+                    for (var i = 0; i < activities.length; i++) {
+                        // init markers
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(activities[i].Lat, activities[i].Lng),
+                            map: map,
+                            title: activities[i].Title
+                        });
+
+                        // process multiple info windows
+                        (function(marker, i) {
+                            // add click event
+                            google.maps.event.addListener(marker, 'click', function() {
+                                infowindow = new google.maps.InfoWindow({
+                                    content: activities[i].Description
+                                });
+                                infowindow.open(map, marker);
+                            });
+                        })(marker, i);
+                    }
+                })();
+            });
+
+    </script>
+}
+
+@section ContentHeader {
+    <h1>@LocalText.Get("Navigation.Map")</h1>
+}
+
+<div class="box box-body">
+    <div id="map_canvas"></div>
+</div>
+

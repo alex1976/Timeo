@@ -1,0 +1,10 @@
+INFORMAZIONI UTILI PER LO SVILUPPO
+
+PROCEDURA PER CREAZIONE NUOVA ENTITY e INTERFACCIA
+1. Creare la "migration"
+2. Avviare l'applicazione per generare fisicamente il DB
+3. Utilizzare comando SERGEN da console pacchetti e selezionare l'entity di cui creare l'interfaccia
+
+LOOKUP
+1. per avere la descrizione anzichè il codice bisogna mettere il campo Description (o che quell che si desidera) nel metodo StringField INameRow.NameField"
+della EntityRow (es. ContractRow)
